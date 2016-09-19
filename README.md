@@ -1,1 +1,1 @@
-# This is somthing i do on my free time
+# This is something i do on my free time
