@@ -1,0 +1,116 @@
+#include "stdafx.h"
+#include <windows.h>
+#include <iostream>
+#include <Tlhelp32.h>
+#include <conio.h>
+ 
+using namespace std;
+ 
+// Get's base address
+__int64 GetModuleBaseAddress(LPCWSTR szProcessName, LPCWSTR szModuleName)
+{
+    HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    PROCESSENTRY32 pe32;
+ 
+    if (hSnap == INVALID_HANDLE_VALUE)
+    {
+        return 0;
+    }
+    pe32.dwSize = sizeof(PROCESSENTRY32);
+    if (Process32First(hSnap, &pe32) == 0)
+    {
+        CloseHandle(hSnap);
+        return 0;
+    }
+ 
+    do
+    {
+        if (lstrcmp(pe32.szExeFile, szProcessName) == 0)
+        {
+            int PID;
+            PID = pe32.th32ProcessID;
+ 
+            HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, PID);
+            MODULEENTRY32 xModule;
+ 
+            if (hSnap == INVALID_HANDLE_VALUE)
+            {
+                return 0;
+            }
+            xModule.dwSize = sizeof(MODULEENTRY32);
+            if (Module32First(hSnap, &xModule) == 0)
+            {
+                CloseHandle(hSnap);
+                return 0;
+            }
+ 
+            do
+            {
+                if (lstrcmp(xModule.szModule, szModuleName) == 0)
+                {
+                    CloseHandle(hSnap);
+                    return (__int64)xModule.modBaseAddr;
+                }
+            } while (Module32Next(hSnap, &xModule));
+            CloseHandle(hSnap);
+            return 0;
+        }
+    } while (Process32Next(hSnap, &pe32));
+    CloseHandle(hSnap);
+    return 0;
+}
+ 
+//Main Program
+int main()
+{
+    wchar_t* WindowName = L"Grand Theft Auto V";
+    wchar_t* GameTitle = L"GTA5.exe";
+ 
+    //GET HANDLE
+    HWND WindowHandle = FindWindow(NULL, WindowName);
+ 
+        // Get Base Address
+        __int64 BaseAddress = GetModuleBaseAddress(GameTitle, GameTitle);
+ 
+    // Get Window Proccess ID
+        DWORD PID;
+        GetWindowThreadProcessId(WindowHandle, &PID);
+ 
+        //Open GTA Handle
+        HANDLE phandle = OpenProcess(PROCESS_ALL_ACCESS, 0, PID);
+ 
+        //Output Saying Game Found
+        cout << "Grand Theft Auto Found!" << endl;
+ 
+ 
+        //Loop
+        for (;;)
+        {
+            //keypress
+            if (GetAsyncKeyState(VK_NUMPAD1))
+            {
+                //Stop It From Spamming
+                Sleep(250);
+ 
+                //Varlables
+                float Health = 200;
+                __int64 pPlayerInfoAddress = 0;
+                DWORD SocialClubPlayerInfo = 01ED6D88;
+                DWORD HealthOffset1 = 0x50;
+                DWORD HealthOffset2 = 0x40;
+                DWORD HealthOffset3 = 0x8;
+                DWORD HealthOffset4 = 0xF8;
+                DWORD HealthOffset5 = 0x280;
+ 
+                // Read and write
+                ReadProssesMemory(phandle, (void*)(BaseAddress + SocialClubPlayerInfo), &pPlaterInfoAddress, sizeof(pPlayerInfoAddress), NULL);
+                	Cout << pPlaterInfoAddress << end1
+               ReadProcessMemory(phandle, (void*)(pPlayerInfoAddress + HealthOffset1 + HealthOffset2 + HealtOffset3 + HealthOffset4 + HealthOffset5), &Health, sizeof(Health), NULL);
+ 
+            }
+            //Opt CPU
+            Sleep(1);
+        }
+       
+ 
+}
