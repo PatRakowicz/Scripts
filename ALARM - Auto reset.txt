@@ -1,0 +1,45 @@
+@name Alarm
+@inputs  Reset
+@outputs Alarm Inbeam:string Isplayer C D
+@persist Alarm
+@trigger 
+interval(10)
+
+D=sin(C)*2
+R=ranger(200,1,0)
+
+Owner1="lividsubset3"
+Owner2=""
+Owner3=""
+Owner4=""
+Inbeam=R:entity():name()
+Isplayer=R:entity():isPlayer()
+
+if(Isplayer==0){
+}
+elseif(Owner1!=Inbeam|Owner2!=Inbeam|Owner3!=Inbeam|Owner4!=Inbeam){
+    Alarm=1
+}
+
+if($Isplayer==0 & clk("T")){
+    timer("T",10000)
+}
+elseif(Owner1==Inbeam | Owner2==Inbeam | Owner3==Inbeam | Owner4==Inbeam){ 
+    Alarm=0
+}
+
+if($Alarm & Alarm==1){
+    #soundPlay(10,0,"ambient/alarms/city_firebell_loop1.wav")
+    hint(Inbeam + "  IS IN BASE",5)
+}
+
+if(Alarm==0){
+    soundStop(10)
+}
+
+if(Reset==1){
+    Alarm=0
+}
+
+Alarmreset=0
+
