@@ -4,9 +4,9 @@
 @persist
 
 
-V1 = 5500   # M16
-V2 = 7000   # SR-M3
-V3 = 6500   # VAL
+V1 = 1   #
+V2 = 1   #
+V3 = 1   #
 V4 = 1   # 
 V5 = 1   #
 V6 = 1   #
@@ -32,9 +32,9 @@ EGP:egpSize(9,40)
 EGP:egpText(11,"Green = Instock",vec2(190,300))
 EGP:egpColor(11,vec(0,255,0))
 
-EGP:egpText(13,"M16 A",vec2(35,30))
-EGP:egpText(14,"SR",vec2(167,30))
-EGP:egpText(15,"VAL",vec2(285,30))
+EGP:egpText(13,"N/A",vec2(35,30))
+EGP:egpText(14,"N/A",vec2(167,30))
+EGP:egpText(15,"N/A",vec2(285,30))
 EGP:egpText(16,"N/A",vec2(410,30))
 EGP:egpText(17,"N/A",vec2(40,400))
 EGP:egpText(18,"N/A",vec2(155,400))
