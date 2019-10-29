@@ -1,129 +1,89 @@
-@name Gunshop - E2
-@inputs EGP:wirelink User:entity R1 R2 R3 R4 R5 R6 R7 R8
-@outputs U1 U2 U3 U4 U5 U6 U7 U8
-@persist
+@name Gunstore Sign
+@inputs EGP:wirelink 
 
-interval(1000000)
+#background circle
+EGP:egpCircle(1, vec2(30,350), vec2(100,100))
+EGP:egpColor(1, vec(255,255,255))
+EGP:egpCircle(2, vec2(30,350), vec2(95,95))
+EGP:egpColor(2, vec(0,0,0))
 
-V1 = 0   #
-V2 = 0   #
-V3 = 0   #
-V4 = 0   # 
-V5 = 0   #
-V6 = 0   #
-V7 = 0   #
-V8 = 0   #
+#Triangle in the back
+EGP:egpTriangle(3, vec2(700,350), vec2(200,300), vec2(500,200))
+EGP:egpTriangle(4, vec2(700,350), vec2(200,300), vec2(430,170))
+EGP:egpTriangle(5, vec2(700,350), vec2(200,300), vec2(200,150))
+EGP:egpTriangle(6, vec2(700,350), vec2(200,300), vec2(250,150))
+EGP:egpTriangle(7, vec2(700,350), vec2(200,300), vec2(300,150))
+EGP:egpColor(3, vec(0,0,0))
+EGP:egpColor(4, vec(255,255,255))
+EGP:egpColor(5, vec(0,0,0))
+EGP:egpColor(6, vec(255,255,255))
+EGP:egpColor(7, vec(0,0,0))
 
+#main circle
+EGP:egpCircle(8, vec2(-100,350), vec2(165,165))
+EGP:egpColor(8, vec(255,255,255))
+EGP:egpCircle(9, vec2(-100,350), vec2(160,160))
+EGP:egpColor(9, vec(0,0,0))
 
-#EGP:egpClear()
+#text box's
+EGP:egpRoundedBox(10, vec2(250,350), vec2(1009,110))
+EGP:egpColor(10, vec(255,255,255))
+EGP:egpRoundedBox(11, vec2(250,350), vec2(1000,100))
+EGP:egpColor(11, vec(0,0,0))
 
-EGP:egpRoundedBox(1,vec2(70,70),vec2(100,100))      #G1
-EGP:egpRoundedBox(2,vec2(195,70),vec2(100,100))     #G2
-EGP:egpRoundedBox(3,vec2(320,70),vec2(100,100))     #G3
-EGP:egpRoundedBox(4,vec2(445,70),vec2(100,100))     #G4
-EGP:egpRoundedBox(5,vec2(70,440),vec2(100,100))     #G5
-EGP:egpRoundedBox(6,vec2(195,440),vec2(100,100))    #G6
-EGP:egpRoundedBox(7,vec2(320,440),vec2(100,100))    #G7
-EGP:egpRoundedBox(8,vec2(445,440),vec2(100,100))    #G8
+#51,51,255
 
-EGP:egpText(9,"Livid's Gun Shop",vec2(120,165))
-EGP:egpColor(9,vec(255,255,255))
-EGP:egpSize(9,40)
+#main text
+EGP:egpText(12, "   Gun Shop - Come get the Pew Pew's", vec2(65,330))
+EGP:egpSize(12, 42)
+EGP:egpColor(12, vec(255,255,255))
 
-EGP:egpText(11,"Green = Instock",vec2(190,300))
-EGP:egpColor(11,vec(0,255,0))
+EGP:egpText(13, "Livid's", vec2(-250,285))
+EGP:egpSize(13, 120)
+EGP:egpColor(13, vec(255,255,255))
 
-EGP:egpText(13,"N/A",vec2(35,30))
-EGP:egpText(14,"N/A",vec2(167,30))
-EGP:egpText(15,"N/A",vec2(285,30))
-EGP:egpText(16,"N/A",vec2(410,30))
-EGP:egpText(17,"N/A",vec2(40,400))
-EGP:egpText(18,"N/A",vec2(155,400))
-EGP:egpText(19,"N/A",vec2(290,400))
-EGP:egpText(20,"N/A",vec2(400,400))
-   
-EGP:egpText(21, V1+ " $",vec2(35,80))
-EGP:egpText(22, V2+ " $",vec2(165,80))
-EGP:egpText(23, V3+ " $",vec2(295,80))
-EGP:egpText(24, V4+ " $",vec2(415,80))
-EGP:egpText(25, V5+ " $",vec2(35,450))
-EGP:egpText(26, V6+ " $",vec2(165,450))
-EGP:egpText(27, V7+ " $",vec2(285,450))
-EGP:egpText(28, V8+ " $",vec2(415,450)) 
+#Mini Round boxes - outer
+EGP:egpRoundedBox(14, vec2(100,465), vec2(50,110))
+EGP:egpAngle(14,45)
+EGP:egpRoundedBox(15, vec2(200,465), vec2(50,110))
+EGP:egpAngle(15,45)
+EGP:egpRoundedBox(16, vec2(300,465), vec2(50,110))
+EGP:egpAngle(16,45)
+EGP:egpRoundedBox(17, vec2(400,465), vec2(50,110))
+EGP:egpAngle(17,45)
+EGP:egpRoundedBox(18, vec2(500,465), vec2(50,110))
+EGP:egpAngle(18,45)
+EGP:egpRoundedBox(19, vec2(600,465), vec2(50,110))
+EGP:egpAngle(19,45)
+EGP:egpRoundedBox(20, vec2(700,465), vec2(50,110))
+EGP:egpAngle(20,45)
+EGP:egpColor(14, vec(0,0,0))
+EGP:egpColor(15, vec(255,255,255))
+EGP:egpColor(16, vec(0,0,0))
+EGP:egpColor(17, vec(255,255,255))
+EGP:egpColor(18, vec(0,0,0))
+EGP:egpColor(19, vec(255,255,255))
+EGP:egpColor(20, vec(0,0,0))
 
-EGP:egpSize(13,30)
-EGP:egpSize(14,30)
-EGP:egpSize(15,30)
-EGP:egpSize(16,30)
-EGP:egpSize(17,30)
-EGP:egpSize(18,30)
-EGP:egpSize(19,30)
-EGP:egpSize(20,30)
-
-EGP:egpSize(21,20)
-EGP:egpSize(22,20)
-EGP:egpSize(23,20)
-EGP:egpSize(24,20)
-EGP:egpSize(25,20)
-EGP:egpSize(26,20)
-EGP:egpSize(27,20)
-EGP:egpSize(28,20)
-EGP:egpSize(29,30)
-
-
-################
-##Money System##
-################
-
-
-function number wirelink:egpButton(Idx:number,Ply:entity,TopLeft:number)
-{
-    TL = This:egpPos(Idx) - This:egpSize(Idx) / 2 * (TopLeft ? 3 : 4)
-    BR = This:egpPos(Idx) + This:egpSize(Idx) / (TopLeft ? 4 : 5)
-    Cur = This:egpCursor(Ply)
-    return inrange(Cur, TL, BR)
-}
-
-if(moneyClk("G1")){U1 = 1 timer("T",0)}
-if(moneyClk("G2")){U2 = 1 timer("T",0)}
-if(moneyClk("G3")){U3 = 1 timer("T",0)}
-if(moneyClk("G4")){U4 = 1 timer("T",0)}
-if(moneyClk("G5")){U5 = 1 timer("T",0)}
-if(moneyClk("G6")){U6 = 1 timer("T",0)}
-if(moneyClk("G7")){U7 = 1 timer("T",0)}
-if(moneyClk("G8")){U8 = 1 timer("T",0)}
-if(clk("T")){U1 = 0 U2 = 0 U3 = 0 U4 = 0 U5 = 0 U6 = 0 U7 = 0 U8 = 0}
-
-
-if(~User & User & EGP:egpButton( 1, User, 1 )&R1>0)
-{moneyRequest(User, V1, "G1")}
-
-if(~User & User & EGP:egpButton( 2, User, 2 )&R2>0)
-{moneyRequest(User, V2, "G2")}
-
-if(~User & User & EGP:egpButton( 3, User, 3 )&R3>0)
-{moneyRequest(User, V3, "G3")}
-
-if(~User & User & EGP:egpButton( 4, User, 4 )&R4>0)
-{moneyRequest(User, V4, "G4")}
-
-if(~User & User & EGP:egpButton( 5, User, 5 )&R5>0)
-{moneyRequest(User, V5, "G5")}
-
-if(~User & User & EGP:egpButton( 6, User, 6 )&R6>0)
-{moneyRequest(User, V6, "G6")}
-
-if(~User & User & EGP:egpButton( 7, User, 7 )&R7>0)
-{moneyRequest(User, V7, "G7")}
-
-if(~User & User & EGP:egpButton( 8, User, 8 )&R8>0)
-{moneyRequest(User, V8, "G8")}
-
-if(R1>0){EGP:egpColor(1, vec(0,255,132))}else{EGP:egpColor(1, vec(255,0,0))}
-if(R2>0){EGP:egpColor(2, vec(0,255,132))}else{EGP:egpColor(2, vec(255,0,0))}
-if(R3>0){EGP:egpColor(3, vec(0,255,132))}else{EGP:egpColor(3, vec(255,0,0))}
-if(R4>0){EGP:egpColor(4, vec(0,255,123))}else{EGP:egpColor(4, vec(255,0,0))}
-if(R5>0){EGP:egpColor(5, vec(0,255,132))}else{EGP:egpColor(5, vec(255,0,0))}
-if(R6>0){EGP:egpColor(6, vec(0,255,132))}else{EGP:egpColor(6, vec(255,0,0))}
-if(R7>0){EGP:egpColor(7, vec(0,255,132))}else{EGP:egpColor(7, vec(255,0,0))}
-if(R8>0){EGP:egpColor(8, vec(0,255,132))}else{EGP:egpColor(8, vec(255,0,0))}
+#Mini Round boxes - inner
+EGP:egpRoundedBox(21, vec2(100,465), vec2(40,102))
+EGP:egpAngle(21,45)
+EGP:egpRoundedBox(22, vec2(200,465), vec2(40,102))
+EGP:egpAngle(22,45)
+EGP:egpRoundedBox(23, vec2(300,465), vec2(40,102))
+EGP:egpAngle(23,45)
+EGP:egpRoundedBox(24, vec2(400,465), vec2(40,102))
+EGP:egpAngle(24,45)
+EGP:egpRoundedBox(25, vec2(500,465), vec2(40,102))
+EGP:egpAngle(25,45)
+EGP:egpRoundedBox(26, vec2(600,465), vec2(40,102))
+EGP:egpAngle(26,45)
+EGP:egpRoundedBox(27, vec2(700,465), vec2(40,102))
+EGP:egpAngle(27,45)
+EGP:egpColor(21, vec(255,255,255))
+EGP:egpColor(22, vec(0,0,0))
+EGP:egpColor(23, vec(255,255,255))
+EGP:egpColor(24, vec(0,0,0))
+EGP:egpColor(25, vec(255,255,255))
+EGP:egpColor(26, vec(0,0,0))
+EGP:egpColor(27, vec(255,255,255))
