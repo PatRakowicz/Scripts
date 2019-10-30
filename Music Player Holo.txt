@@ -1,0 +1,62 @@
+@name Music Player Holo
+@persist State:string CLASS:string T ENT:entity A:array 
+runOnChat(1)
+interval(50)
+
+if(first()){
+printColor(vec(randint(255),69,randint(255)),"Hello, I am Saturn The Music Playing Hologram.")
+printColor(vec(randint(255),255,randint(255)),"Type !commands for a list of all my commands")
+printColor(vec(randint(255),0,randint(255)),"PS. ThatOneGingie will always be my real dad "+owner():name())
+}
+
+holoCreate(1)  
+holoModel(1,"hq_sphere")
+holoMaterial(1,"models/shadertest/shader4")
+holoScale(1,vec(1.5,1.5,1.5))
+
+holoCreate(2)
+holoModel(2,"hq_sphere")
+holoAlpha(2,150)
+holoScale(2,vec(1.75,1.75,1.75))
+holoColor(2,vec(255,255,255))
+
+holoCreate(3)  
+holoModel(3,"torus3")
+holoScale(3,vec(2,2,0.5))
+holoColor(3,vec(128,128,128))
+
+holoParent(2,1)
+holoParent(3,1)
+
+holoAng(1,ang(0,curtime(),0)*40)
+holoColor(2,hsv2rgb(abs(sin(curtime() *1) *800), 1, 1))
+holoColor(3,hsv2rgb(abs(sin(curtime() *1) *800), 1, 1))
+holoPos(1, entity():pos()+vec(0,0,35 +sin(curtime() * 150 )* 15))
+
+#These songs are from Teta The Man, They are not mine, But I DID code the e2, I just simply Stole his playlist because I am a lazy fuck and didnt want to add 15+ songs to a playlist manually
+SongsList=array("https://www.dropbox.com/s/i3a62x44jj6rb68/Jake%20Paul%20-%20Its%20Everyday%20Bro%20feat.%20Team%2010%20%28Explicit%29.mp3?raw=1","https://github.com/SkylerHadaway/expression2-scripts/blob/master/Magnolia.mp3?raw=true","https://github.com/SkylerHadaway/expression2-scripts/blob/master/24K%20Magic.mp3?raw=true","https://github.com/SkylerHadaway/expression2-scripts/blob/master/Look%20At%20Me.mp3?raw=true","https://github.com/SkylerHadaway/expression2-scripts/blob/master/XO%20Life.mp3?raw=true","https://github.com/SkylerHadaway/expression2-scripts/blob/master/Time.mp3?raw=true","https://github.com/SkylerHadaway/expression2-scripts/blob/master/beibs.mp3?raw=true","https://github.com/SkylerHadaway/expression2-scripts/blob/master/X.mp3?raw=true","https://github.com/SkylerHadaway/expression2-scripts/blob/master/hopper.mp3?raw=true","http://speedofsoundpgh.files.wordpress.com/2011/12/kendrick-lamar-adhd.mp3","http://www.dopewax.com/wp-content/uploads/2015/03/Kendrick-Lamar-King-Kunta.mp3","https://www.stuffdown.com/track/2%20Chainz%20Ft.%20Travis%20Scott%20-%204%20AM%20-%20(www.SongsLover.com).mp3","https://github.com/SkylerHadaway/expression2-scripts/blob/master/teriyakiboyz.mp3?raw=true","http://dopefile.pk/mp3embed-l1uaajy2zowy.mp3","http://yp.shoutcast.com/sbin/tunein-station.m3u?id=1357102","http://yp.shoutcast.com/sbin/tunein-station.pls?id=313609","http://listen.housetime.fm/dsl.pls")
+streamDisable3D(1)
+
+if(chatClk(owner())){
+    OwnerLS=owner():lastSaid():explode(" ")       
+    if(OwnerLS[1,string]=="!play"){
+        printColor(vec(0,255,0),"Saturn The Music Hologram is now playing:" +OwnerLS[2,string]:toNumber():toString())
+        streamStop(1)
+        entity():streamStart(1,SongsList[OwnerLS[2,string]:toNumber(),string],1)
+    }
+    elseif(OwnerLS[1,string]=="!volume"){
+        streamVolume(1,OwnerLS[2,string]:toNumber())
+        printColor(vec(120,255,120),"Volume: "+OwnerLS[2,string]:toNumber():toString()+". Remember 1 Is The Max, So Use Numbers Between 0 and 1")
+    }
+    elseif(OwnerLS[1,string]=="!stop"){
+        streamStop(1)
+        printColor(vec(255,0,0),"All Music Has Been Stopped!")
+    }
+    elseif(OwnerLS[1,string]=="!commands"){
+        printColor(vec(0,120,0),"Thank You For Typing !commands. My Current Commands Are:")
+        printColor(vec(255,69,255),"1. !play - This plays the song, !play 1-16")
+        printColor(vec(255,69,255),"2. !volume - This changes the volume, !volume 0-1")
+        printColor(vec(255,69,255),"3. !stop - Haults all music")
+        printColor(vec(255,69,255),"4. !commands - Displays all my commands")
+    }
+}

@@ -1,0 +1,288 @@
+@name New Gunshop
+@inputs E:wirelink User:entity UserEntity:entity
+@outputs Fire Pos:vector2
+@persist Gun:array GunPos:array ShipmentEntity:array ShipmentPosition:array Player:entity Function
+runOnChat(1)
+
+#interval(1000)
+#findByModel("models/exhibbox.mdl")
+
+
+if(first()){
+    entity():createWire(entity():isWeldedTo(),"E","wirelink")
+    entity():createWire(entity():isWeldedTo(),"User","User")
+    
+    findByClass("gmod_wire_user")
+    findSortByDistance(entity():pos())
+    find():createWire(entity(),"Fire","Fire")
+}
+
+Profit=1.10
+
+N1=ShipmentEntity[1,entity]:shipmentName()
+N2=ShipmentEntity[2,entity]:shipmentName()
+N3=ShipmentEntity[3,entity]:shipmentName()
+N4=ShipmentEntity[4,entity]:shipmentName()
+N5=ShipmentEntity[5,entity]:shipmentName()
+
+P1=round(ShipmentEntity[1,entity]:shipmentPrice()/10)*Profit
+P2=round(ShipmentEntity[2,entity]:shipmentPrice()/10)*Profit
+P3=round(ShipmentEntity[3,entity]:shipmentPrice()/10)*Profit
+P4=round(ShipmentEntity[4,entity]:shipmentPrice()/10)*Profit
+P5=round(ShipmentEntity[5,entity]:shipmentPrice()/10)*Profit
+
+S1=ShipmentEntity[1,entity]:shipmentAmount()
+S2=ShipmentEntity[2,entity]:shipmentAmount()
+S3=ShipmentEntity[3,entity]:shipmentAmount()
+S4=ShipmentEntity[4,entity]:shipmentAmount()
+S5=ShipmentEntity[5,entity]:shipmentAmount()
+
+function guns(){
+E:egpBox(1,vec2(256,256),vec2(520,520))
+E:egpMaterial(1,"gui/gradient_up")
+E:egpColor(1,vec(42,200,240))
+
+E:egpBox(2,vec2(256,256),vec2(520,520))
+E:egpMaterial(2,"gui/gradient_down")
+E:egpColor(2,vec(1,70,90))
+
+E:egpBox(3,vec2(15,256),vec2(35,550))
+E:egpColor(3,vec(1,110,140))
+    
+E:egpBox(4,vec2(495,256),vec2(35,550))
+E:egpColor(4,vec(1,110,140))
+    
+E:egpBox(5,vec2(256,495),vec2(450,35))
+E:egpColor(5,vec(1,110,140))
+    
+E:egpBox(6,vec2(256,15),vec2(450,35))
+E:egpColor(6,vec(1,110,140))
+    
+E:egpBox(7,vec2(256,18),vec2(485,5))
+E:egpColor(7,vec(1,200,255))
+    
+E:egpBox(8,vec2(256,493),vec2(485,5))
+E:egpColor(8,vec(1,200,255))
+    
+E:egpBox(9,vec2(496,256),vec2(5,478))
+E:egpColor(9,vec(1,200,255))
+
+E:egpBox(10,vec2(16,256),vec2(5,478))
+E:egpColor(10,vec(1,200,255))
+
+E:egpRoundedBox(11,vec2(254,20),vec2(440,40))
+E:egpColor(11,vec(1,110,140))
+
+E:egpRoundedBox(12,vec2(254,20),vec2(434,34))
+E:egpColor(12,vec(1,200,255)) 
+
+E:egpRoundedBox(13,vec2(254,490),vec2(440,40))
+E:egpColor(13,vec(1,110,140))
+
+E:egpRoundedBox(14,vec2(254,490),vec2(434,34))
+E:egpColor(14,vec(1,200,255)) 
+      
+E:egpText(15,owner():name():left(13)+"'s Shop",vec2(256,20))
+E:egpFont(15,"coolvetica",35)
+E:egpAlign(15,1,1) 
+E:egpColor(15,vec(0,0,0))
+
+E:egpText(16,"Press E On The Gun Name To Purchase",vec2(255,490))
+E:egpFont(16,"coolvetica",26)
+E:egpAlign(16,1,1)
+E:egpColor(16,vec(0,0,0))
+
+E:egpRoundedBox(17,vec2(256,256),vec2(410,350))
+E:egpColor(17,vec(1,110,140))
+E:egpAlign(17,1,1)
+    
+E:egpRoundedBox(18,vec2(256,256),vec2(400,340))
+E:egpColor(18,vec(1,60,70))
+E:egpAlign(18,1,1)
+    
+E:egpText(19,"Guns For Sale:",vec2(256,110))
+E:egpColor(19,vec(0,0,0))
+E:egpFont(19,"coolvetica",38)
+E:egpAlign(19,1,1)
+
+E:egpBox(20,vec2(256,150),vec2(380,35))    
+E:egpColor(20,vec(1,200,255))
+E:egpAlign(20,1,1)
+
+E:egpText(21,"1. "+N1:left(12)+"  Price: $"+P1+" In Stock: "+S1,vec2(258,150))
+E:egpFont(21,"coolvetica",23)
+E:egpColor(21,vec(0,0,0))
+E:egpAlign(21,1,1)
+    
+E:egpBox(22,vec2(256,200),vec2(380,35))    
+E:egpColor(22,vec(1,200,255))
+E:egpAlign(22,1,1)
+
+E:egpText(23,"2. "+N2:left(12)+"  Price: $"+P2+" In Stock: "+S2,vec2(256,200))
+E:egpFont(23,"coolvetica",23)
+E:egpColor(23,vec(0,0,0))
+E:egpAlign(23,1,1)
+
+E:egpBox(24,vec2(256,250),vec2(380,35))    
+E:egpColor(24,vec(1,200,255))
+E:egpAlign(24,1,1)
+
+E:egpText(25,"3. "+N3:left(12)+"  Price: $"+P3+" In Stock: "+S3,vec2(256,250))
+E:egpFont(25,"coolvetica",23)
+E:egpColor(25,vec(0,0,0))
+E:egpAlign(25,1,1)
+
+E:egpBox(26,vec2(256,300),vec2(380,35))    
+E:egpColor(26,vec(1,200,255))
+E:egpAlign(26,1,1)
+
+E:egpText(27,"4. "+N4:left(12)+"  Price: $"+P4+" In Stock: "+S4,vec2(256,300))
+E:egpFont(27,"coolvetica",23)
+E:egpColor(27,vec(0,0,0))
+E:egpAlign(27,1,1)
+
+E:egpBox(28,vec2(256,350),vec2(380,35))    
+E:egpColor(28,vec(1,200,255))
+E:egpAlign(28,1,1)
+
+E:egpText(29,"5. "+N5:left(12)+"  Price: $"+P5+" In Stock: "+S5,vec2(256,350))
+E:egpFont(29,"coolvetica",23)
+E:egpColor(29,vec(0,0,0))
+E:egpAlign(29,1,1)
+
+E:egpText(30,"If You Experience Any Issues PM "+owner():name():left(13),vec2(256,450))
+E:egpFont(30,"coolvetica",23)
+E:egpColor(30,vec(0,0,0))
+E:egpAlign(30,1,1)
+
+E:egpText(31,"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_",vec2(256,390))
+E:egpFont(31,"coolvetica",30)
+E:egpColor(31,vec(0,0,0))
+E:egpAlign(31,1,1)
+
+E:egpText(32,"_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_",vec2(256,55))
+E:egpFont(32,"coolvetica",30)
+E:egpColor(32,vec(0,0,0))
+E:egpAlign(32,1,1)
+}
+
+if(chatClk(owner())){
+    LastSaid = lastSaid():lower():explode(" ")
+    Number=LastSaid[2,string]:toNumber()
+    if(LastSaid[1,string]=="!gun"){
+        hideChat(1)
+        ShipmentEntity[Number,entity]=owner():aimEntity()
+        ShipmentPosition[Number,vector]=owner():aimEntity():pos()
+        printColor(vec(69,255,69),"Added Shipment #"+Number+" Out of 5. To Your ForSale List")
+        guns()
+    }
+    elseif(LastSaid[1,string]=="!update"){
+        hideChat(1)
+        printColor(vec(140,255,69),"Your Shop's For Sale Screen Has Been Updated")
+        guns()
+        Function=1
+    }
+    elseif(LastSaid[1,string]=="!stop"){
+        hideChat(1)
+        printColor(vec(255,140,69),"Your Shop Has Been Haulted")
+        Function=0
+        
+    }
+}
+
+function number wirelink:onClick(Player:entity,ID){
+    local Position=This:egpPos(ID),local Height=This:egpSize(ID)/2,return inrange(This:egpCursor(Player),Position-Height,Position+Height)
+}
+
+if(Function==1){
+    if (E:onClick(User,20)) {
+        moneyRequest(User,P1,N1)    
+    }
+    if (E:onClick(User,22)) {
+        moneyRequest(User,P2,N2)    
+    }
+    if (E:onClick(User,24)) {
+        moneyRequest(User,P3,N3)   
+    }
+    if (E:onClick(User,26)) {
+        moneyRequest(User,P4,N4)   
+    }
+    if (E:onClick(User,28)) {
+        moneyRequest(User,P5,N5)   
+    }
+}
+elseif(Function==0){
+    #Empty
+}
+
+if(moneyClk(N1)) {
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    #ShipmentEntity[1,entity]:setPos(UserEntity:pos()+vec(0,0,5))
+    #ShipmentEntity[1,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[1,entity]:setPos(UserEntity:pos()+vec(0,0,25))
+    ShipmentEntity[1,entity]:setAng(ang(0,0,180))
+    stopAllTimers() 
+    timer("user",1000)
+    Function=0
+}
+elseif(moneyClk(N2)) {
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    #ShipmentEntity[2,entity]:setPos(UserEntity:pos()+vec(0,0,5))
+    #ShipmentEntity[2,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[2,entity]:setPos(UserEntity:pos()+vec(0,0,25))
+    ShipmentEntity[2,entity]:setAng(ang(0,0,180))
+    stopAllTimers() 
+    timer("user",1000)
+    Function=0
+}
+elseif(moneyClk(N3)) {
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    #ShipmentEntity[3,entity]:setPos(UserEntity:pos()+vec(0,0,5))
+    #ShipmentEntity[3,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[3,entity]:setPos(UserEntity:pos()+vec(0,0,25))
+    ShipmentEntity[3,entity]:setAng(ang(0,0,180))
+    stopAllTimers() 
+    timer("user",1000)
+    Function=0
+}
+elseif(moneyClk(N4)) {
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    #ShipmentEntity[4,entity]:setPos(UserEntity:pos()+vec(0,0,5))
+    #ShipmentEntity[4,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[4,entity]:setPos(UserEntity:pos()+vec(0,0,25))
+    ShipmentEntity[4,entity]:setAng(ang(0,0,180))
+    stopAllTimers() 
+    timer("user",1000)
+    Function=0
+}
+elseif(moneyClk(N5)) {
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    #ShipmentEntity[5,entity]:setPos(UserEntity:pos()+vec(0,0,5))
+    #ShipmentEntity[5,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[5,entity]:setPos(UserEntity:pos()+vec(0,0,25))
+    ShipmentEntity[5,entity]:setAng(ang(0,0,180))
+    stopAllTimers() 
+    timer("user",1000)
+    Function=0
+}
+
+if(clk("user")){
+Fire++
+stoptimer("user")  
+timer("user1",1500)  
+}
+elseif(clk("user1")) {
+    ShipmentEntity[1,entity]:setPos(ShipmentPosition[1,vector])
+    ShipmentEntity[1,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[2,entity]:setPos(ShipmentPosition[2,vector])
+    ShipmentEntity[2,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[3,entity]:setPos(ShipmentPosition[3,vector])
+    ShipmentEntity[3,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[4,entity]:setPos(ShipmentPosition[4,vector])
+    ShipmentEntity[4,entity]:setAng(ang(0,0,0))
+    ShipmentEntity[5,entity]:setPos(ShipmentPosition[5,vector])
+    ShipmentEntity[5,entity]:setAng(ang(0,0,0))
+    guns()
+    stoptimer("user1")
+    Function=1
+}

@@ -1,0 +1,169 @@
+@name Testing New Button Configs
+@inputs E:wirelink 
+@outputs Pos:vector2
+@persist Money Total
+interval(100)
+function mainScreen(){  
+E:egpRoundedBox(100,vec2(256,256),vec2(520,520))
+E:egpMaterial(100,"gui/gradient_up")
+E:egpColor(100,vec(42,42,42))
+
+E:egpRoundedBox(200,vec2(256,256),vec2(520,520))
+E:egpMaterial(200,"gui/gradient_down")
+E:egpColor(200,vec(69,69,69))
+
+E:egpRoundedBox(1,vec2(256,55),vec2(500,90))
+E:egpColor(1,vec(58,128,58))    
+
+E:egpRoundedBox(2,vec2(256,256),vec2(309,100))
+E:egpColor(2,vec(58,58,58))       
+
+E:egpRoundedBox(3,vec2(256,256),vec2(300,90))
+E:egpColor(3,vec(58,128,58))   
+
+E:egpRoundedBox(4,vec2(180,350),vec2(100,45))
+E:egpColor(4,vec(128,58,58))  
+
+E:egpRoundedBox(5,vec2(330,350),vec2(100,45))
+E:egpColor(5,vec(128,58,58))   
+
+E:egpRoundedBox(7,vec2(180,170),vec2(100,45))
+E:egpColor(7,vec(58,128,58))  
+
+E:egpRoundedBox(8,vec2(330,170),vec2(100,45))
+E:egpColor(8,vec(58,128,58)) 
+
+E:egpRoundedBox(10,vec2(170,430),vec2(130,90))
+E:egpColor(10,vec(58,200,58)) 
+
+E:egpRoundedBox(11,vec2(340,430),vec2(130,90))
+E:egpColor(11,vec(200,58,58))        
+
+E:egpText(12,"Donate To "+owner():name():left(13),vec2(256,55))
+E:egpFont(12,"coolvetica",40)
+E:egpAlign(12,1,1) 
+E:egpColor(12,vec(0,0,0))
+
+E:egpText(13,"+$1K",vec2(180,170))
+E:egpFont(13,"coolvetica",40)
+E:egpAlign(13,1,1) 
+E:egpColor(13,vec(0,0,0))
+
+E:egpText(14,"+$10K",vec2(330,170))
+E:egpFont(14,"coolvetica",40)
+E:egpAlign(14,1,1) 
+E:egpColor(14,vec(0,0,0))
+
+E:egpText(16,"-$1K",vec2(180,350))
+E:egpFont(16,"coolvetica",40)
+E:egpAlign(16,1,1) 
+E:egpColor(16,vec(0,0,0))
+
+E:egpText(17,"-$10K",vec2(330,350))
+E:egpFont(17,"coolvetica",40)
+E:egpAlign(17,1,1) 
+E:egpColor(17,vec(0,0,0))
+
+E:egpText(19,"$"+Money,vec2(256,256))
+E:egpFont(19,"coolvetica",50)
+E:egpAlign(19,1,1) 
+E:egpColor(19,vec(0,0,0))
+
+E:egpText(20,"Donate",vec2(170,430))
+E:egpFont(20,"coolvetica",45)
+E:egpAlign(20,1,1) 
+E:egpColor(20,vec(0,0,0))
+
+E:egpText(21,"Reset",vec2(340,430))
+E:egpFont(21,"coolvetica",45)
+E:egpAlign(21,1,1) 
+E:egpColor(21,vec(0,0,0))
+
+E:egpText(22,"Total Donations So Far:",vec2(256,115))
+E:egpFont(22,"coolvetica",30)
+E:egpAlign(22,1,1) 
+E:egpColor(22,vec(255,255,255))
+
+E:egpText(23,"$"+Total,vec2(256,135))
+E:egpFont(23,"coolvetica",30)
+E:egpAlign(23,1,1) 
+E:egpColor(23,vec(128,255,128))
+
+E:egpCircle(300, vec2(0,0), vec2(2,2))
+E:egpColor(300, vec(255,120,120))
+E:egpParentToCursor(300)
+    
+}
+if(first() | duped()){
+    Money=1000
+    Total=0
+    mainScreen()
+}
+
+elseif(Money<=0){
+    Money=1000
+    mainScreen()
+}
+elseif(Money>=1000000){
+    Money=1000000
+    mainScreen()
+}
+
+if(findCanQuery())
+{
+    findIncludeClass("player")
+    findInSphere(E:entity():pos(),120)
+    Player = findClosest(E:entity():pos())
+}
+Pos = round(E:egpCursor(Player))
+Use = (changed(Player:keyUse()==1)&Player:keyUse()==1)
+    
+local TopLeft = E:egpPos(4) - E:egpSize(4)/2
+local BottomRight = E:egpPos(4) + E:egpSize(4)/2
+local TopLeft2 = E:egpPos(5) - E:egpSize(5)/2
+local BottomRight2 = E:egpPos(5) + E:egpSize(5)/2   
+local TopLeft3 = E:egpPos(7) - E:egpSize(7)/2
+local BottomRight3 = E:egpPos(7) + E:egpSize(7)/2 
+local TopLeft4 = E:egpPos(8) - E:egpSize(8)/2
+local BottomRight4 = E:egpPos(8) + E:egpSize(8)/2
+local TopLeft5 = E:egpPos(10) - E:egpSize(10)/2
+local BottomRight5 = E:egpPos(10) + E:egpSize(10)/2
+local TopLeft6 = E:egpPos(11) - E:egpSize(11)/2
+local BottomRight6 = E:egpPos(11) + E:egpSize(11)/2
+
+if(inrange(Pos, TopLeft, BottomRight) & Use == 1) {
+    Money-=1000
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    mainScreen()
+} 
+elseif(inrange(Pos, TopLeft2, BottomRight2) & Use == 1) {
+    Money-=10000
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    mainScreen()
+}
+elseif(inrange(Pos, TopLeft3, BottomRight3) & Use == 1) {
+    Money+=1000
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    mainScreen()
+} 
+elseif(inrange(Pos, TopLeft4, BottomRight4) & Use == 1) {
+    Money+=10000
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    mainScreen()
+}
+elseif(inrange(Pos, TopLeft5, BottomRight5) & Use == 1) {
+    moneyRequest(Player,Money,"Donation")
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    mainScreen()
+}
+elseif(inrange(Pos, TopLeft6, BottomRight6) & Use == 1) {
+    Money=1000
+    entity():soundPlay(1,2,"garrysmod/ui_click.wav")
+    mainScreen()
+}
+if(moneyClk()){
+    Total+=Money
+    Money=1000
+    mainScreen()
+    entity():soundPlay(1,5,"vo/k_lab/ba_geethanks.wav")
+}
