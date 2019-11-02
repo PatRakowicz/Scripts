@@ -34,7 +34,7 @@ P=1.32
 function open() {
     E:egpClear()
     
-    E:egpRoundedBox(1,vec2(256,150),vec2(480,50))       #G1
+    E:egpRoundedBox(1,vec2(256,150),vec2(480,50))      #G1
     E:egpRoundedBox(2,vec2(256,230),vec2(480,50))      #G2
     E:egpRoundedBox(3,vec2(256,310),vec2(480,50))      #G3
     E:egpRoundedBox(4,vec2(256,390),vec2(480,50))      #G4
@@ -42,13 +42,24 @@ function open() {
 #    E:egpRoundedBox(6,vec2(256,440),vec2(100,100))    #G6
 #    E:egpRoundedBox(7,vec2(256,440),vec2(100,100))    #G7
 #    E:egpRoundedBox(8,vec2(256,440),vec2(100,100))    #G8
+        
+    E:egpRoundedBox(29,vec2(256,50),vec2(490,80))
+    E:egpColor(29,vec(255,255,255))
+    E:egpRoundedBox(30,vec2(256,50),vec2(480,70))
+    E:egpColor(30,vec(0,0,0))
     
-#    E:egpText(9,"Livid's Gun Shop",vec2(120,165))
+    E:egpText(9,"Livid's Gun Shop",vec2(256,35))
     E:egpColor(9,vec(255,255,255))
     E:egpSize(9,40)
+    E:egpAlign(9,1,1)
     
-#    E:egpText(11,"Blue = Instock",vec2(190,300))
+    E:egpText(11,"Blue = In Stock",vec2(150,70))
     E:egpColor(11,vec(0,0,255))
+    E:egpAlign(11,1,1)
+    
+    E:egpText(12,"Red = Out Of Stock",vec2(370,70))
+    E:egpColor(12,vec(255,0,0))
+    E:egpAlign(12,1,1)
 #[
     E:egpText(13,N1,vec2(70,40))
     E:egpSize(13,24)
@@ -110,8 +121,8 @@ function open() {
 function close() {
     E:egpClear()
     
-    E:egpRoundedBox(29,vec2(256,256),vec2(460,460))
-    E:egpColor(29,vec(255,255,255))
+    E:egpRoundedBox(100,vec2(256,256),vec2(460,460))
+    E:egpColor(100,vec(255,255,255))
     
 }
 
