@@ -34,11 +34,36 @@ P=1.32
 function open() {
     E:egpClear()
     
-    E:egpRoundedBox(1,vec2(256,150),vec2(480,50))      #G1
-    E:egpRoundedBox(2,vec2(256,230),vec2(480,50))      #G2
-    E:egpRoundedBox(3,vec2(256,310),vec2(480,50))      #G3
-    E:egpRoundedBox(4,vec2(256,390),vec2(480,50))      #G4
-    E:egpRoundedBox(5,vec2(256,470),vec2(480,50))      #G5
+    E:egpRoundedBox(31,vec2(256,150),vec2(480,50))
+    E:egpColor(31,vec(255,255,255))
+    E:egpRoundedBox(32,vec2(256,150),vec2(470,40))
+    E:egpColor(32,vec(0,0,0))
+    E:egpCircle(1,vec2(470,150),vec2(17,17))              #G1
+    
+    E:egpRoundedBox(33,vec2(256,230),vec2(480,50))
+    E:egpColor(33,vec(255,255,255))
+    E:egpRoundedBox(34,vec2(256,230),vec2(470,40))
+    E:egpColor(34,vec(0,0,0))
+    E:egpCircle(2,vec2(470,230),vec2(17,17))              #G2
+    
+    E:egpRoundedBox(35,vec2(256,310),vec2(480,50))
+    E:egpColor(35,vec(255,255,255))
+    E:egpRoundedBox(36,vec2(256,310),vec2(470,40))
+    E:egpColor(36,vec(0,0,0))
+    E:egpCircle(3,vec2(470,310),vec2(17,17))             #G3
+    
+    E:egpRoundedBox(37,vec2(256,390),vec2(480,50))
+    E:egpColor(37,vec(255,255,255))
+    E:egpRoundedBox(38,vec2(256,390),vec2(470,40))
+    E:egpColor(38,vec(0,0,0))
+    E:egpCircle(4,vec2(470,390),vec2(17,17))             #G4
+ 
+    E:egpRoundedBox(39,vec2(256,470),vec2(480,50))
+    E:egpColor(39,vec(255,255,255))
+    E:egpRoundedBox(40,vec2(256,470),vec2(470,40))
+    E:egpColor(40,vec(0,0,0))
+    E:egpCircle(5,vec2(470,470),vec2(17,17))             #G5
+
 #    E:egpRoundedBox(6,vec2(256,440),vec2(100,100))    #G6
 #    E:egpRoundedBox(7,vec2(256,440),vec2(100,100))    #G7
 #    E:egpRoundedBox(8,vec2(256,440),vec2(100,100))    #G8
