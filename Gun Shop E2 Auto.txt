@@ -78,30 +78,31 @@ function open() {
     E:egpSize(9,40)
     E:egpAlign(9,1,1)
     
-    E:egpText(11,"Blue = In Stock",vec2(150,70))
-    E:egpColor(11,vec(0,0,255))
+    E:egpText(11,"Green = In Stock",vec2(150,70))
+    E:egpColor(11,vec(0,255,0))
     E:egpAlign(11,1,1)
     
     E:egpText(12,"Red = Out Of Stock",vec2(370,70))
     E:egpColor(12,vec(255,0,0))
     E:egpAlign(12,1,1)
-#[
-    E:egpText(13,N1,vec2(70,40))
+    
+
+    E:egpText(13,N1,vec2(140,150))
     E:egpSize(13,24)
     E:egpAlign(13,1,1) 
-    E:egpText(14,N2,vec2(195,40))
+    E:egpText(14,N2,vec2(140,230))
     E:egpSize(14,24)
     E:egpAlign(14,1,1)
-    E:egpText(15,N3,vec2(320,40))
+    E:egpText(15,N3,vec2(140,310))
     E:egpSize(15,24)
     E:egpAlign(15,1,1)
-    E:egpText(16,N4,vec2(445,40))
+    E:egpText(16,N4,vec2(140,390))
     E:egpSize(16,24)
     E:egpAlign(16,1,1)
-    E:egpText(17,N5,vec2(70,410))
+    E:egpText(17,N5,vec2(140,470))
     E:egpSize(17,24)
     E:egpAlign(17,1,1)
-]#
+
 #[
     E:egpText(18,N6,vec2(195,410))
     E:egpSize(18,24)
@@ -113,23 +114,23 @@ function open() {
     E:egpSize(20,24)
     E:egpAlign(20,1,1)
 ]#
-#[
-    E:egpText(21, V1*P/10+ " $",vec2(70,80))
+
+    E:egpText(21, V1*P/10+ " $",vec2(370,150))
     E:egpSize(21,20)
     E:egpAlign(21,1,1)
-    E:egpText(22, V2*P/10+ " $",vec2(195,80))
+    E:egpText(22, V2*P/10+ " $",vec2(370,230))
     E:egpSize(22,20)
     E:egpAlign(22,1,1)
-    E:egpText(23, V3*P/10+ " $",vec2(320,80))
+    E:egpText(23, V3*P/10+ " $",vec2(370,310))
     E:egpSize(23,20)
     E:egpAlign(23,1,1)
-    E:egpText(24, V4*P/10+ " $",vec2(445,80))
+    E:egpText(24, V4*P/10+ " $",vec2(370,390))
     E:egpSize(24,20)
     E:egpAlign(24,1,1)
-    E:egpText(25, V5*P/10+ " $",vec2(70,450))
+    E:egpText(25, V5*P/10+ " $",vec2(370,470))
     E:egpSize(25,20)
     E:egpAlign(25,1,1)
-]#
+
 #[  
     E:egpText(26, V6*P/10+ " $",vec2(195,450))
     E:egpSize(26,20)
@@ -148,7 +149,16 @@ function close() {
     
     E:egpRoundedBox(100,vec2(256,256),vec2(460,460))
     E:egpColor(100,vec(255,255,255))
+    E:egpRoundedBox(101,vec2(256,256),vec2(450,450))
+    E:egpColor(101,vec(0,0,0))
     
+    E:egpText(102,"~  The Store is CLOSED  ~",vec2(256,160))
+    E:egpSize(102,35)
+    E:egpAlign(102,1,1)
+    
+    E:egpText(103,"~  Sorry for the inconvenience  ~",vec2(256,350))
+    E:egpSize(103,25)
+    E:egpAlign(103,1,1)
 }
 
 if(chatClk(owner())){
@@ -211,11 +221,11 @@ if(~User & User & E:egpButton( 5, User, 5 )&R5>0)
 #if(~User & User & E:egpButton( 8, User, 8 )&R8>0)
 #{moneyRequest(User, V8*P/10, "G8")}
 
-if(R1>0){E:egpColor(1, vec(0,0,132))}else{E:egpColor(1, vec(255,0,0))}
-if(R2>0){E:egpColor(2, vec(0,0,132))}else{E:egpColor(2, vec(255,0,0))}
-if(R3>0){E:egpColor(3, vec(0,0,132))}else{E:egpColor(3, vec(255,0,0))}
-if(R4>0){E:egpColor(4, vec(0,0,123))}else{E:egpColor(4, vec(255,0,0))}
-if(R5>0){E:egpColor(5, vec(0,0,132))}else{E:egpColor(5, vec(255,0,0))}
+if(R1>0){E:egpColor(1, vec(0,255,0))}else{E:egpColor(1, vec(255,0,0))}
+if(R2>0){E:egpColor(2, vec(0,255,0))}else{E:egpColor(2, vec(255,0,0))}
+if(R3>0){E:egpColor(3, vec(0,255,0))}else{E:egpColor(3, vec(255,0,0))}
+if(R4>0){E:egpColor(4, vec(0,255,0))}else{E:egpColor(4, vec(255,0,0))}
+if(R5>0){E:egpColor(5, vec(0,255,0))}else{E:egpColor(5, vec(255,0,0))}
 #if(R6>0){E:egpColor(6, vec(0,0,132))}else{E:egpColor(6, vec(255,0,0))}
 #if(R7>0){E:egpColor(7, vec(0,0,132))}else{E:egpColor(7, vec(255,0,0))}
 #if(R8>0){E:egpColor(8, vec(0,0,132))}else{E:egpColor(8, vec(255,0,0))}
