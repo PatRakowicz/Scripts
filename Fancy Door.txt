@@ -1,0 +1,84 @@
+@name Fancy Door
+@inputs 
+@outputs 
+@persist [F B]:entity R A
+@trigger 
+
+interval(100)
+R+=4
+
+if(first()){
+        
+    B = propSpawn("models/hunter/blocks/cube2x2x05.mdl",1)
+    B:setPos(entity():toWorld(vec(0,0,50)))
+    B:setAng(ang(vec(0,0,90)))
+    B:setAlpha(0)
+    B:setMaterial("phoenix_storms/dome")
+    
+    F = propSpawn("models/hunter/tubes/tube2x2x025.mdl",1)
+    F:setPos(entity():toWorld(vec(0,0,50)))
+    F:setAng(ang(vec(0,0,90)))
+    F:setMaterial("editor/gray")
+    
+    holoCreate(1,entity():toWorld(vec(0,0,50)))
+    holoModel(1,"models/hunter/plates/platehole1x2.mdl")
+    holoAng(1,ang(vec(-90,0,90)))
+    holoMaterial(1,"editor/gray")
+    
+    holoCreate(2,entity():toWorld(vec(0,0,50)))
+    holoModel(2,"models/hunter/tubes/tube2x2x025.mdl")
+    holoAng(2,ang(vec(0,0,90)))
+    holoScale(2,vec(0.99,0.99,0.3))
+    holoMaterial(2,"debug/debugdrawflat")
+    holoColor(2,vec(0,0,0))
+    
+    holoCreate(3,entity():toWorld(vec(0,0,50)))
+    holoModel(3,"models/hunter/misc/cone2x05.mdl")
+    holoAng(3,ang(vec(0,0,90)))
+    holoScale(3,vec(1,1,0.01))
+    holoMaterial(3,"")
+    holoAlpha(3,0)
+    holoParent(3,2)
+    
+    holoCreate(4,entity():toWorld(vec(0,0,50)))
+    holoModel(4,"models/hunter/misc/cone2x05.mdl")
+    holoAng(4,ang(vec(0,0,90)))
+    holoScale(4,vec(1,1,0.01))
+    holoMaterial(4,"models/shadertest/vertexlitalphatestedtexture")
+    holoColor(4,vec(0,0,0))
+    
+    entity():setdLight(entity():toWorld(vec(0,-50,50)),vec(0,255,0),5,300,0)
+}
+
+function open(){
+    holoColor(2,vec(0,255,0))
+    holoAlpha(3,255)
+    holoMaterial(3,"models/shadertest/predator")
+    holoAlpha(4,0)
+    entity():dLightBrightness(5)
+
+}
+
+function close(){
+    holoColor(2,vec(0,0,0))
+    holoAlpha(3,0)
+    holoMaterial(3,"")
+    holoAlpha(4,255)
+    entity():dLightBrightness(0)
+}
+
+
+if(B:getMaterial()=="phoenix_storms/dome") {
+    A=1    
+}
+else {
+    A=0
+}
+
+if(changed(A)&A==1){
+    close()
+}
+if(changed(A)&A==0){
+   open()
+}
+holoAng(2,ang(vec(R,0,90)))
