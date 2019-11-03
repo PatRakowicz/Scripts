@@ -161,19 +161,19 @@ if(moneyClk("G5")){U5 = 1 timer("T",0)}
 if(clk("T")){U1 = 0 U2 = 0 U3 = 0 U4 = 0 U5 = 0}
 
 
-if(~User & User & E:egpButton( 1, User, 1 )&R1>0)
+if(~User & User & E:egpButton( 32, User, 1 )&R1>0)
 {moneyRequest(User, V1*P/10, "G1")}
 
-if(~User & User & E:egpButton( 2, User, 2 )&R2>0)
+if(~User & User & E:egpButton( 34, User, 2 )&R2>0)
 {moneyRequest(User, V2*P/10, "G2")}
 
-if(~User & User & E:egpButton( 3, User, 3 )&R3>0)
+if(~User & User & E:egpButton( 36, User, 3 )&R3>0)
 {moneyRequest(User, V3*P/10, "G3")}
 
-if(~User & User & E:egpButton( 4, User, 4 )&R4>0)
+if(~User & User & E:egpButton( 38, User, 4 )&R4>0)
 {moneyRequest(User, V4*P/10, "G4")}
 
-if(~User & User & E:egpButton( 5, User, 5 )&R5>0)
+if(~User & User & E:egpButton( 40, User, 5 )&R5>0)
 {moneyRequest(User, V5*P/10, "G5")}
 
 if(R1>0){E:egpColor(1, vec(0,255,0))}else{E:egpColor(1, vec(255,0,0))}
