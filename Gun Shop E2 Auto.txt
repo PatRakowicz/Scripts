@@ -14,9 +14,6 @@ V2 = 0
 V3 = 0
 V4 = 0
 V5 = 0
-#V6 = 0
-#V7 = 0
-#V8 = 0
 
 #Gun Names
 N1 = "N/A"
@@ -24,9 +21,6 @@ N2 = "N/A"
 N3 = "N/A"
 N4 = "N/A"
 N5 = "N/A"
-#N6 = "N/A"
-#N7 = "N/A"
-#N8 = "N/A"
 
 #Profit Multiplyer
 P=1.32
@@ -64,9 +58,6 @@ function open() {
     E:egpColor(40,vec(0,0,0))
     E:egpCircle(5,vec2(470,470),vec2(17,17))             #G5
 
-#    E:egpRoundedBox(6,vec2(256,440),vec2(100,100))    #G6
-#    E:egpRoundedBox(7,vec2(256,440),vec2(100,100))    #G7
-#    E:egpRoundedBox(8,vec2(256,440),vec2(100,100))    #G8
         
     E:egpRoundedBox(29,vec2(256,50),vec2(490,80))
     E:egpColor(29,vec(255,255,255))
@@ -103,18 +94,6 @@ function open() {
     E:egpSize(17,24)
     E:egpAlign(17,1,1)
 
-#[
-    E:egpText(18,N6,vec2(195,410))
-    E:egpSize(18,24)
-    E:egpAlign(18,1,1)
-    E:egpText(19,N7,vec2(320,410))
-    E:egpSize(19,24)
-    E:egpAlign(19,1,1)
-    E:egpText(20,N8,vec2(445,410))
-    E:egpSize(20,24)
-    E:egpAlign(20,1,1)
-]#
-
     E:egpText(21, V1*P/10+ " $",vec2(370,150))
     E:egpSize(21,20)
     E:egpAlign(21,1,1)
@@ -130,18 +109,6 @@ function open() {
     E:egpText(25, V5*P/10+ " $",vec2(370,470))
     E:egpSize(25,20)
     E:egpAlign(25,1,1)
-
-#[  
-    E:egpText(26, V6*P/10+ " $",vec2(195,450))
-    E:egpSize(26,20)
-    E:egpAlign(26,1,1)
-    E:egpText(27, V7*P/10+ " $",vec2(320,450))
-    E:egpSize(27,20)
-    E:egpAlign(27,1,1)
-    E:egpText(28, V8*P/10+ " $",vec2(445,450)) 
-    E:egpSize(28,20)
-    E:egpAlign(28,1,1) 
-]#
 }
 
 function close() {
@@ -191,10 +158,7 @@ if(moneyClk("G2")){U2 = 1 timer("T",0)}
 if(moneyClk("G3")){U3 = 1 timer("T",0)}
 if(moneyClk("G4")){U4 = 1 timer("T",0)}
 if(moneyClk("G5")){U5 = 1 timer("T",0)}
-#if(moneyClk("G6")){U6 = 1 timer("T",0)}
-#if(moneyClk("G7")){U7 = 1 timer("T",0)}
-#if(moneyClk("G8")){U8 = 1 timer("T",0)}
-if(clk("T")){U1 = 0 U2 = 0 U3 = 0 U4 = 0 U5 = 0 #[U6 = 0 U7 = 0 U8 = 0]#}
+if(clk("T")){U1 = 0 U2 = 0 U3 = 0 U4 = 0 U5 = 0}
 
 
 if(~User & User & E:egpButton( 1, User, 1 )&R1>0)
@@ -212,20 +176,8 @@ if(~User & User & E:egpButton( 4, User, 4 )&R4>0)
 if(~User & User & E:egpButton( 5, User, 5 )&R5>0)
 {moneyRequest(User, V5*P/10, "G5")}
 
-#if(~User & User & E:egpButton( 6, User, 6 )&R6>0)
-#{moneyRequest(User, V6*P/10, "G6")}
-
-#if(~User & User & E:egpButton( 7, User, 7 )&R7>0)
-#{moneyRequest(User, V7*P/10, "G7")}
-
-#if(~User & User & E:egpButton( 8, User, 8 )&R8>0)
-#{moneyRequest(User, V8*P/10, "G8")}
-
 if(R1>0){E:egpColor(1, vec(0,255,0))}else{E:egpColor(1, vec(255,0,0))}
 if(R2>0){E:egpColor(2, vec(0,255,0))}else{E:egpColor(2, vec(255,0,0))}
 if(R3>0){E:egpColor(3, vec(0,255,0))}else{E:egpColor(3, vec(255,0,0))}
 if(R4>0){E:egpColor(4, vec(0,255,0))}else{E:egpColor(4, vec(255,0,0))}
 if(R5>0){E:egpColor(5, vec(0,255,0))}else{E:egpColor(5, vec(255,0,0))}
-#if(R6>0){E:egpColor(6, vec(0,0,132))}else{E:egpColor(6, vec(255,0,0))}
-#if(R7>0){E:egpColor(7, vec(0,0,132))}else{E:egpColor(7, vec(255,0,0))}
-#if(R8>0){E:egpColor(8, vec(0,0,132))}else{E:egpColor(8, vec(255,0,0))}
