@@ -1,0 +1,8 @@
+if(cpuUsage() > 0.0015){
+    print("Reset Due To CPU Usage")
+    reset()
+}
+elseif(timeQuota() > 0.001){
+    print("Reset Due To Time Quota")
+    reset()
+}
