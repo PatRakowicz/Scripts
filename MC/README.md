@@ -1,1 +1,1 @@
-# All my MineCraft Scipts for Open Computer/Computer Craft
+# All my Minecraft Scipts for Open Computer/Computer Craft
