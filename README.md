@@ -1,1 +1,1 @@
-# Some LUA scripts I created
+# Some scripts I created for different games/servers
