@@ -1,0 +1,18 @@
+@name Admin Checker
+@persist I
+
+interval(500)
+if (first()) {
+    I = 0
+    if (playersAdmins():count() < 1) {
+        hint("There seems to be no admins present.",5)
+        selfDestruct()
+        exit()
+    }
+}
+
+I+=1
+AdminType = playersAdmins()[I,entity]:isSuperAdmin() ? "SuperAdmin" : "Admin"
+hint(playersAdmins()[I,entity]:name()+" | "+AdminType,8)
+
+if (I >= playersAdmins():count()) { selfDestruct() }
