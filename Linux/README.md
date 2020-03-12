@@ -1,4 +1,4 @@
-# Usefull commands/notes
+# Useful commands/notes
 
 1. ```watch -n 5 ./( .sh file )```
 > This will allow for a script to be run as a prosses and ran again every 5 seconds. Useful for git pull origin master for servers
