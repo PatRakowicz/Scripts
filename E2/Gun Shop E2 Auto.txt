@@ -15,7 +15,7 @@ V3 = 0
 V4 = 0
 V5 = 0
 
-#Gun Names
+#Shipment Name
 N1 = "N/A"
 N2 = "N/A"
 N3 = "N/A"
